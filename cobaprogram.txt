@@ -3,5 +3,5 @@ Theo ingin belajar:
 - Java
 - C
 - C++
-- My Sql
+- Oracle 
 itu aja duluu
