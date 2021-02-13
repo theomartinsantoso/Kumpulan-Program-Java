@@ -3,3 +3,5 @@ Theo ingin belajar:
 - Java
 - C
 - C++
+- My Sql
+itu aja duluu
