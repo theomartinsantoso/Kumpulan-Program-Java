@@ -1,2 +1,0 @@
-# belajarprogram
-Coba belajar pemrograman
