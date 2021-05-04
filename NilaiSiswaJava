@@ -1,0 +1,98 @@
+import java.util.Scanner;
+ 
+public class NilaiSiswaJava {
+ 
+ static int jumlahSoalKu;
+ static char [] kunciJawabanKu;
+ 
+ public static void main(String args []){
+  
+  char [][] jawabanUjian = buatArray2D();
+  char [] kunciJawabanUjian = buatKunciJawaban();
+  hitungJawabanSiswa(jawabanUjian);
+  
+  
+  System.out.println("Array 2D dari jawaban ujian adalah " 
+       + java.util.Arrays.deepToString(jawabanUjian));
+  
+  System.out.println("Array 1D dari kunci jawaban adalah "  + 
+       java.util.Arrays.toString(kunciJawabanUjian));
+ }
+ 
+ public static char [][] buatArray2D(){ 
+  
+  Scanner input = new Scanner(System.in);
+  System.out.print("Berapa jumlah siswa yang "
+    + "mengikuti ujian ? ");
+    int jumlahSiswa = input.nextInt();
+    
+    if(jumlahSiswa<=0){
+     System.out.print("Tidak ada siswa yang ikut ujian!, Libur kali!");
+     System.exit(0);
+    } 
+  
+  System.out.print("Berapa soal yang diberikan ? ");
+    int jumlahSoal = input.nextInt();
+    
+    if(jumlahSoal<=0){
+     System.out.print("Tidak ada soal yang diberikan, ujian tidak jadi!");
+     System.exit(0);
+    }
+  
+    
+    jumlahSoalKu = jumlahSoal;
+    
+  char [][] jawabanSiswa  = new char [jumlahSiswa][jumlahSoal];
+  
+  
+  System.out.println("Masukkan jawaban siswa: ");
+  
+  
+  for (int i = 0; i < jawabanSiswa.length; i ++){
+   for (int j = 0; j < jawabanSiswa[i].length; j++){
+    jawabanSiswa[i][j] = input.next().charAt(0);
+   }
+  }
+  
+  return jawabanSiswa;
+ }
+ 
+ 
+ public static char [] buatKunciJawaban(){
+  
+  char [] kunciJawaban = new char [jumlahSoalKu];
+  kunciJawabanKu = kunciJawaban;
+  
+  int jumlahSoalAwal = 1;
+  int i = 0;
+  
+  while((jumlahSoalAwal <= jumlahSoalKu) && (i < kunciJawaban.length)){
+   Scanner input = new Scanner (System.in);
+   System.out.print( "Masukkan kunci jawaban nomor " 
+       + (jumlahSoalAwal) + ": " );
+   char jawaban = input.next().charAt(0);
+   jumlahSoalAwal+=1;
+   kunciJawaban[i] = jawaban;
+   i+=1;
+  }
+  return kunciJawaban;
+ }
+ 
+ 
+ public static void hitungJawabanSiswa (char [][]jawabanSiswa){
+  for (int i = 0; i < jawabanSiswa.length; i++){
+   int jumlahJawabanBenar = 0;
+   for (int j = 0; j < jawabanSiswa[i].length; j++){
+    
+    if(jawabanSiswa[i][j] == kunciJawabanKu[j]){
+     jumlahJawabanBenar++;
+    }
+   }
+   
+   System.out.println("Siswa nomor " + (i+1)
+     + " berhasil menjawab dengan benar " + 
+     jumlahJawabanBenar +" soal");
+  }
+  
+ }
+}
